@@ -4,15 +4,16 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
 
-  // Preflight
+  // Handle preflight OPTIONS request
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  // Only allow POST
+  // Only allow POST after OPTIONS is handled
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Only POST allowed" });
   }
+
 
   const { prompt } = req.body || {};
   if (!prompt) {
