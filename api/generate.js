@@ -23,11 +23,10 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
-      body: JSON.stringify({
-        model: "gpt-image-1",
-        prompt,
-        size: "1024x1024",
-        response_format: "b64_json"
+       body: JSON.stringify({
+         model: "gpt-image-1",
+         prompt,
+         size: "1024x1024"
       })
     });
 
